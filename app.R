@@ -4,6 +4,8 @@ library(tidyverse)
 library(readxl)
 library(leaflet)
 library(shiny)
+library(shinythemes)
+
 
 load_data <- function() {
   url <- "https://catalogue.data.govt.nz/api/3/action/datastore_search?resource_id=4b292323-9fcc-41f8-814b-3c7b19cf14b3&limit=32000"
@@ -45,6 +47,7 @@ find_closest_schools <- function(selected_school, all_schools) {
 }
 
 ui <- fluidPage(
+  theme = shinytheme("yeti"),
   tags$head(
     tags$style(HTML("
       .title {
@@ -76,12 +79,7 @@ ui <- fluidPage(
       }
     "))
   ),
-  titlePanel(
-    div(
-      class = "title",
-      "NZ Secondary School Achievement"
-    )
-  ),
+  titlePanel("NZ Secondary School Achievement"),
   
   sidebarLayout(
     sidebarPanel(
